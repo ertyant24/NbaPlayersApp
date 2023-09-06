@@ -1,0 +1,11 @@
+Backend Url:
+http://localhost:5205/swagger/index.html
+http://localhost:5205/Player
+
+Frontend Url:
+http://localhost:3000/
+
+____________________________________
+
+NPM
+npm install axios --save
