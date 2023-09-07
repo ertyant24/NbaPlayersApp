@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 // CLASS
 class RouterPlayer extends Component {
 
+    // DİSPLAYNAME
+    static displayName = "Router_Player";
+
     constructor(props) {
         super(props);
 
