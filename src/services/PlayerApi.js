@@ -24,7 +24,7 @@ class PlayerApi {
     }
 
     
-    EditPlayer(id, model) {
+    Edit(id, model) {
         return axios.put(`${playerUrl}/${id}`, model);
     }
 
