@@ -1,5 +1,6 @@
 // rcc
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 
 // CLASS
 class RouterPlayer extends Component {
@@ -33,4 +34,4 @@ class RouterPlayer extends Component {
         )
     }
 }
-export default RouterPlayer;
+export default withTranslation()(RouterPlayer);
