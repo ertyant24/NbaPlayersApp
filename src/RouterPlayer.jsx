@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 // router
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 // Routes
 import PlayerList from './components/player/PlayerList';
 import PlayerCreate from './components/player/PlayerCreate';
@@ -31,7 +31,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <Main/>
+        element: <Main />
+    },
+    {
+        path: "*",
+        element: <Navigate to="/" />
     }
 ]);
 
@@ -61,8 +65,10 @@ class RouterPlayer extends Component {
         return (
             <>
                 <Header logo="fa-solid fa-basketball" />
-                <RouterProvider router={router}/>
-                <Footer copy="© 2021 Copyright: Players"/>
+                <div className='container'>
+                    <RouterProvider router={router} />
+                </div>
+                <Footer copy="© 2021 Copyright: Players" />
             </>
         )
     }

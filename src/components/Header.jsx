@@ -4,8 +4,8 @@ import { withTranslation } from 'react-i18next'
 function Header({logo}) {
     return (
         <>
-            <nav className="navbar bg-dark border-bottom border-body mb-4" data-bs-theme="dark">
-                <div className="container-fluid">
+            <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body mb-4 sticky-top" data-bs-theme="dark">
+                <div className="container">
                     <a className="navbar-brand" href="#">
                        <i className={logo}></i>
                     </a>
