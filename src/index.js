@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RouterPlayer from './RouterPlayer';
-// router
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {
-    
-  },
-]);
+// Routes
+import PlayerList from './components/player/PlayerList'
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

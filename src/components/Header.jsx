@@ -1,13 +1,13 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 
-function Header() {
+function Header({logo}) {
     return (
         <>
-            <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <nav className="navbar bg-dark border-bottom border-body mb-4" data-bs-theme="dark">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
-                        Navbar
+                       <i className={logo}></i>
                     </a>
                     <button
                         className="navbar-toggler"

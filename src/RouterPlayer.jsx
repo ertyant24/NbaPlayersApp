@@ -4,6 +4,36 @@ import { withTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+// router
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// Routes
+import PlayerList from './components/player/PlayerList';
+import PlayerCreate from './components/player/PlayerCreate';
+import PlayerView from './components/player/PlayerView';
+import PlayerUpdate from './components/player/PlayerUpdate';
+
+const router = createBrowserRouter([
+    {
+        path: "/player/view/:id",
+        element: <PlayerView />
+    },
+    {
+        path: "/player/list",
+        element: <PlayerList />
+    },
+    {
+        path: "/player/create",
+        element: <PlayerCreate />
+    },
+    {
+        path: "/player/update/:id",
+        element: <PlayerUpdate />
+    },
+    {
+        path: "/",
+        element: <Main/>
+    }
+]);
 
 // CLASS
 class RouterPlayer extends Component {
@@ -30,9 +60,9 @@ class RouterPlayer extends Component {
     render() {
         return (
             <>
-                <Header/>
-                <Main/>
-                <Footer/>
+                <Header logo="fa-solid fa-basketball" />
+                <RouterProvider router={router}/>
+                <Footer copy="© 2021 Copyright: Players"/>
             </>
         )
     }

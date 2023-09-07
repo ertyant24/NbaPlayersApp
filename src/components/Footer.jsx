@@ -1,11 +1,11 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 
-function Footer() {
+function Footer({copy}) {
     return (
         <>
             {/* Footer */}
-            <footer className="text-center text-lg-start bg-dark text-white">
+            <footer className="text-center text-lg-start bg-dark text-white mt-4">
                 {/* Section: Social media */}
                 <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                     {/* Left */}
@@ -136,9 +136,8 @@ function Footer() {
                     className="text-center p-4"
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
                 >
-                    © 2021 Copyright:
                     <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-                        Player
+                        {copy}
                     </a>
                 </div>
                 {/* Copyright */}
