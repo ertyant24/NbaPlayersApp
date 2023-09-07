@@ -1,6 +1,9 @@
 // rcc
 import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 // CLASS
 class RouterPlayer extends Component {
@@ -27,9 +30,9 @@ class RouterPlayer extends Component {
     render() {
         return (
             <>
-                <div>
-                    Router Player Page ...
-                </div>
+                <Header/>
+                <Main/>
+                <Footer/>
             </>
         )
     }
