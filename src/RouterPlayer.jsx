@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // CLASS
 class RouterPlayer extends Component {
 
-    constructor() {
+    constructor(props) {
         super(props);
 
         // STATE
