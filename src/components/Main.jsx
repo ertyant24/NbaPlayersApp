@@ -9,13 +9,14 @@ function Main() {
         <>
             <div>
                 <div className="alert alert-info text-center fs-3" role="alert">
-                    <strong>Merhabalar</strong> Nba Severler !!!
+                    <strong style={{color: "red"}}>Merhabalar</strong> Nba Severler !!!
                 </div>
             </div>
             <div className='mt-4 text-center'>
                 <Link to="/player/list" className='btn btn-secondary'>
-                    <img src={BasketballPng} alt="basketball" width="300px"/>
+                    <img style={{cursor: "pointer"}} src={BasketballPng} alt="basketball" width="400px"/>
                 </Link>
+                <div>Player List' e gitmek için fotoğrafa tıkla !</div>
             </div>
             <div className='mt-3'>
                 <p className='paragraf'>
