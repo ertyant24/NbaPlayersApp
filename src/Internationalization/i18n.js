@@ -8,6 +8,14 @@ const resources = {
       "hello" : "Merhabalar",
       "homepage" : "Ana Sayfa",
       "about" : "Hakkımızda",
+      "playername" : "Adı - Soyadı",
+      "playershoesize" : "Ayakkabı Numarası",
+      "playerteam" : "Takım",
+      "playerisactive" : "Aktiflik Durumu",
+      "playerupdate" : "Güncelle",
+      "playerview" : "Göster",
+      "playerdelete" : "Sil",
+      "playerlist" : "Oyuncu Listesi",
     }
   },
   en: {
@@ -16,6 +24,14 @@ const resources = {
       "hello" : "Hello",
       "homepage" : "Home Page",
       "about" : "About",
+      "playername" : "FullName",
+      "playershoesize" : "Shoe Size",
+      "playerteam" : "Team",
+      "playerisactive" : "İs Active",
+      "playerupdate" : "Update",
+      "playerview" : "View",
+      "playerdelete" : "Delete",
+      "playerlist" : "Player List",
     }
   }
 };
