@@ -66,7 +66,8 @@ class RouterPlayer extends Component {
             <>
                 <Header logo="fa-solid fa-basketball" />
                 <div className='container'>
-                    <RouterProvider router={router} />
+                    <RouterProvider router={router}>
+                    </RouterProvider >
                 </div>
                 <Footer copy="© 2021 Copyright: Players" />
             </>

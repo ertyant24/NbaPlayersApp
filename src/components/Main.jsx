@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import BasketballPng from '../Images/basketball.jpg'
 
-function Main() {
+function Main({t}) {
     return (
         <>
             <div>
                 <div className="alert alert-info text-center fs-3" role="alert">
-                    <strong style={{color: "red"}}>Merhabalar</strong> Nba Severler !!!
+                    <strong style={{color: "red"}}>{t("hello")}</strong> Nba Severler !!!
                 </div>
             </div>
             <div className='mt-4 text-center'>
