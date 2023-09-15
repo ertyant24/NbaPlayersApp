@@ -9,7 +9,7 @@ import '../src/Internationalization/i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterPlayer/>
+    <RouterPlayer />
   </React.StrictMode>
 );
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { withTranslation } from 'react-i18next';
 import PlayerApi from '../../services/PlayerApi';
+import { Link } from 'react-router-dom';
 
 function PlayerList({ t }) {
 
@@ -15,7 +16,23 @@ function PlayerList({ t }) {
       .catch(() => {
 
       })
-  })
+  });
+
+  const updatePlayer = (id) => {
+    alert(`Update ${id}`);
+  };
+
+  const viewPlayer = (id) => {
+    alert(`View ${id}`);
+  };
+
+  const deletePlayer = (id) => {
+    alert(`Delete ${id}`);
+  };
+
+  const deleteAllPlayer = () => {
+    
+  }
 
   return (
     <>
@@ -23,7 +40,11 @@ function PlayerList({ t }) {
         <div className='row'>
           <div className='col-6 offset-3'>
             <h1 className='text-center text-primary'>{t("playerlist")}</h1>
-          </div> 
+          </div>
+          <div className='text-end mt-3'>
+            <Link className='btn btn-danger me-3'><i className="fa-solid fa-trash me-2"></i>Delete All Player</Link>
+            <Link to="/player/create" className='btn btn-primary'><i className="fa-solid fa-user-plus me-2"></i>Player Add</Link>
+          </div>
         </div><hr />
       </div>
       <table className='table table-hover table-striped text-center'>
@@ -47,12 +68,38 @@ function PlayerList({ t }) {
                 <th>{player.team}</th>
                 <th>
                   {
-                    player.isActive ? <i style={{color: "green"}} className="fa-solid fa-check"></i> : <i style={{color: "red"}} className="fa-solid fa-xmark"></i>
+                    player.isActive ? <i style={{ color: "green" }} className="fa-solid fa-check"></i> : <i style={{ color: "red" }} className="fa-solid fa-xmark"></i>
                   }
                 </th>
-                <th><i style={{cursor: "pointer"}} className="fa-solid fa-pen-to-square"></i></th>
-                <th><i style={{cursor: "pointer"}} className="fa-solid fa-eye"></i></th>
-                <th><i style={{cursor: "pointer"}} className="fa-solid fa-trash"></i></th>
+                <th>
+                  <i 
+                  style={{ cursor: "pointer" }} 
+                  className="fa-solid fa-pen-to-square"
+                  onClick={() => updatePlayer(player.id)}>
+                  </i>
+                  </th>
+                <th>
+                  <i 
+                  style={{ cursor: "pointer" }} 
+                  className="fa-solid fa-eye"
+                  onClick={() => viewPlayer(player.id)}>
+                  </i>
+                  </th>
+                <th>
+                  <i 
+                  style={{ cursor: "pointer" }} 
+                  className="fa-solid fa-user-minus"
+                  onClick={() => {
+                    let result = window.confirm(`Are you sure delete this player - ${player.fullName}`);
+                    if(result){
+                      deletePlayer(player.id);
+                    }
+                    else{
+                      alert("Player is not deleted ...");
+                    }
+                  }}>
+                  </i>
+                  </th>
               </tr>
             ))
           }
