@@ -16,6 +16,8 @@ const resources = {
       "playerview" : "Göster",
       "playerdelete" : "Sil",
       "playerlist" : "Oyuncu Listesi",
+      "playeralldelete" : "Tüm Oyuncuları Sil",
+      "addplayer" : "Oyuncu Ekle",
     }
   },
   en: {
@@ -32,6 +34,8 @@ const resources = {
       "playerview" : "View",
       "playerdelete" : "Delete",
       "playerlist" : "Player List",
+      "playeralldelete" : "Delete All Player",
+      "addplayer" : "Add Player",
     }
   }
 };
