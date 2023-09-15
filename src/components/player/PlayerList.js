@@ -16,22 +16,33 @@ function PlayerList({ t }) {
       .catch(() => {
 
       })
-  });
+  },[]);
 
   const updatePlayer = (id) => {
-    alert(`Update ${id}`);
+    // alert(`Update ${id}`);
   };
 
   const viewPlayer = (id) => {
-    alert(`View ${id}`);
+    // alert(`View ${id}`);
   };
 
   const deletePlayer = (id) => {
-    alert(`Delete ${id}`);
+    // DB'den gitmeden silmek:
+    // setPlayerData(() => playerData.filter((nba) => nba.id != id));
+
+    // Aynı zamanda DB' den silmek:
+    PlayerApi.Delete(id)
+    .then((response) => {
+      console.log(`Deleted data: ${response}`);
+      playerData.filter((nba) => nba.id != id);
+    })
+    .catch(() =>{
+
+    })
   };
 
   const deleteAllPlayer = () => {
-    
+
   }
 
   return (
