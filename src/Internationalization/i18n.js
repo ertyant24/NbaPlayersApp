@@ -18,6 +18,11 @@ const resources = {
       "playerlist" : "Oyuncu Listesi",
       "playeralldelete" : "Tüm Oyuncuları Sil",
       "addplayer" : "Oyuncu Ekle",
+      "isread" : "Sözleşmeyi okudum.",
+      "reset" : "Temizle",
+      "memberprocess" : "Üyelik İşlemleri",
+      "login" : "Giriş",
+      "register" : "Kayıt",
     }
   },
   en: {
@@ -36,6 +41,11 @@ const resources = {
       "playerlist" : "Player List",
       "playeralldelete" : "Delete All Player",
       "addplayer" : "Add Player",
+      "isread" : "I read contract.",
+      "reset" : "Reset",
+      "memberprocess" : "Member Process",
+      "login" : "Login",
+      "register" : "Register",
     }
   }
 };
