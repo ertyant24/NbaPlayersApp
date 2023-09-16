@@ -55,7 +55,7 @@ function PlayerCreate({ t }) {
     setSpinner(true);
     setMultipleRequest(true);
 
-    const playerDto = { fullName, team, shoeSize }
+    const playerDto = { fullName, team, shoeSize, isActive }
     console.log(playerDto);
 
     toastr.options = {
@@ -67,6 +67,12 @@ function PlayerCreate({ t }) {
       .then((response) => {
         console.log(response);
         if (response.status == 201) {
+          // LOCAL STORAGE
+          localStorage.setItem("Player Name", playerDto.fullName);
+          localStorage.setItem("Player Shoe Size", playerDto.shoeSize);
+          localStorage.setItem("Player Team", playerDto.team);
+          localStorage.setItem("Player Status", playerDto.isActive);
+
           toastr.success('Player is added.', `${playerDto.fullName}`, { timeOut: 2000 })
           setSpinner(false);
           setMultipleRequest(false);
