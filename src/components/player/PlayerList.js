@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { withTranslation } from 'react-i18next';
 import PlayerApi from '../../services/PlayerApi';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 function PlayerList({ t }) {
 
@@ -35,6 +37,7 @@ function PlayerList({ t }) {
       .then((response) => {
         console.log(`Deleted data: ${response}`);
         playerData.filter((nba) => nba.id != id);
+        window.location.reload();
       })
       .catch(() => {
 
@@ -115,6 +118,7 @@ function PlayerList({ t }) {
                       let result = window.confirm(`Are you sure delete this player - ${player.fullName}`);
                       if (result) {
                         deletePlayer(player.id);
+                        toastr.error('Deleted this player', `${player.fullName}`)
                       }
                       else {
                         alert("Player is not deleted ...");

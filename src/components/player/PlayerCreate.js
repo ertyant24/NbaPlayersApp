@@ -4,14 +4,15 @@ import PlayerApi from '../../services/PlayerApi';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 
-function PlayerCreate({t}) {
+function PlayerCreate({ t }) {
 
   // STATE
-  const[isRead, setİsRead] = useState(false);
-  const[isActive, setİsActive] = useState(false);
-  const[fullName, setFullName] = useState("");
-  const[shoeSize, setShoeSize] = useState("");
-  const[team, setTeam] = useState("");
+  const [isRead, setİsRead] = useState(false);
+  const [isActive, setİsActive] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [shoeSize, setShoeSize] = useState("");
+  const [team, setTeam] = useState("");
+  const [spinner, setSpinner] = useState(false);
 
 
   const changeFullName = (event) => {
@@ -42,12 +43,13 @@ function PlayerCreate({t}) {
     setİsRead(true)
   }
 
-  const addPlayer = async(event) => {
+  const addPlayer = async (event) => {
 
     // Browser sen dur birşey yapma !
     event.preventDefault();
-    
-    const playerDto = {fullName, team, shoeSize}
+    setSpinner(true);
+
+    const playerDto = { fullName, team, shoeSize }
     console.log(playerDto);
 
     toastr.options = {
@@ -56,16 +58,17 @@ function PlayerCreate({t}) {
     }
 
     PlayerApi.Create(playerDto)
-    .then((response) => {
-      console.log(response);
-      if(response.status == 201){
-        toastr.success('Player is added.', `${playerDto.fullName}`, {timeOut: 2000})
-      }
-    })
-    .catch((err) => {
-      let validattion = document.getElementById("validation");
-      validattion.innerText = `Error Message: ${err}`;
-    })
+      .then((response) => {
+        console.log(response);
+        if (response.status == 201) {
+          toastr.success('Player is added.', `${playerDto.fullName}`, { timeOut: 2000 })
+          setSpinner(false);
+        }
+      })
+      .catch((err) => {
+        let validattion = document.getElementById("validation");
+        validattion.innerText = `Error Message: ${err}`;
+      })
   }
 
   return (
@@ -112,13 +115,13 @@ function PlayerCreate({t}) {
               <label htmlFor="team">{t("playerteam")}</label>
             </div>
             <div className="form-check">
-              <input className="form-check-input" type="checkbox" defaultValue="" id="isActive" onChange={isActiveChecked}/>
+              <input className="form-check-input" type="checkbox" defaultValue="" id="isActive" onChange={isActiveChecked} />
               <label className="form-check-label" htmlFor="isActive">
                 {t("playerisactive")}
               </label>
             </div>
             <div className="form-check mt-2">
-              <input className="form-check-input" type="checkbox" defaultValue="" id="isRead" onChange={isReadChecked}/>
+              <input className="form-check-input" type="checkbox" defaultValue="" id="isRead" onChange={isReadChecked} />
               <label className="form-check-label" htmlFor="isRead">
                 {t("isread")}
               </label>
@@ -126,6 +129,13 @@ function PlayerCreate({t}) {
             <div className='mt-3 text-end'>
               <button onClick={reset} className='btn btn-danger me-2'>{t("reset")}</button>
               <button onClick={addPlayer} disabled={!isRead} className='btn btn-primary'>{t("addplayer")}</button>
+              <span className='ms-2 '>
+                {
+                  spinner ? <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div> : ""
+                }
+              </span>
             </div>
           </div>
         </div>
