@@ -46,7 +46,7 @@ function PlayerList({ t }) {
     if (result) {
       setPlayerData(playerData.filter((nba) => nba.fullName = ""));
     }
-    else{
+    else {
       alert("All Data are not deleted ...");
     }
 
@@ -90,18 +90,22 @@ function PlayerList({ t }) {
                   }
                 </th>
                 <th>
-                  <i
-                    style={{ cursor: "pointer" }}
-                    className="fa-solid fa-pen-to-square"
-                    onClick={() => updatePlayer(player.id)}>
-                  </i>
+                  <Link to={`/player/update/${player.id}`} className='text-dark'>
+                    <i
+                      style={{ cursor: "pointer" }}
+                      className="fa-solid fa-pen-to-square"
+                    >
+                    </i>
+                  </Link>
                 </th>
                 <th>
-                  <i
-                    style={{ cursor: "pointer" }}
-                    className="fa-solid fa-eye"
-                    onClick={() => viewPlayer(player.id)}>
-                  </i>
+                  <Link className='text-dark' to={`/player/view/${player.id}`}>
+                    <i
+                      style={{ cursor: "pointer" }}
+                      className="fa-solid fa-eye"
+                    >
+                    </i>
+                  </Link>
                 </th>
                 <th>
                   <i
