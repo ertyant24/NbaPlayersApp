@@ -3,6 +3,8 @@ import { withTranslation } from 'react-i18next'
 import PlayerApi from '../../services/PlayerApi';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
+import ResuabilityPlayerInput from './ResuabilityPlayerInput';
+import { useNavigate } from 'react-router-dom';
 
 function PlayerCreate({ t }) {
 
@@ -14,6 +16,8 @@ function PlayerCreate({ t }) {
   const [team, setTeam] = useState("");
   const [spinner, setSpinner] = useState(false);
   const[multipleRequest, setMultipleRequest] = useState(false);
+
+  const navigate = useNavigate();
 
 
   const changeFullName = (event) => {
@@ -66,6 +70,7 @@ function PlayerCreate({ t }) {
           toastr.success('Player is added.', `${playerDto.fullName}`, { timeOut: 2000 })
           setSpinner(false);
           setMultipleRequest(false);
+          navigate("/player/list");
         }
       })
       .catch((err) => {
@@ -82,7 +87,7 @@ function PlayerCreate({ t }) {
             <h1 className='text-center text-primary mb-4'>{t(("addplayer"))}</h1>
             <div className='fs-6 text-danger px-3 mb-3' id='validation'></div>
             <div className="form-floating mb-3">
-              <input
+              {/* <input
                 onChange={changeFullName}
                 type="text"
                 className="form-control"
@@ -91,10 +96,20 @@ function PlayerCreate({ t }) {
                 placeholder=""
                 value={fullName}
               />
-              <label htmlFor="fullName">{t("playername")}</label>
+              <label htmlFor="fullName">{t("playername")}</label> */}
+              <ResuabilityPlayerInput
+                onChange={changeFullName}
+                type="text"
+                className="form-control"
+                name="fullName"
+                id="fullName"
+                placeholder={t("playername")}
+                value={fullName}
+                autoFocus={true}
+              />
             </div>
             <div className="form-floating mb-3">
-              <input
+              {/* <input
                 onChange={changeShoeSize}
                 value={shoeSize}
                 type="text"
@@ -103,7 +118,17 @@ function PlayerCreate({ t }) {
                 id="shoeSize"
                 placeholder=""
               />
-              <label htmlFor="shoeSize">{t("playershoesize")}</label>
+              <label htmlFor="shoeSize">{t("playershoesize")}</label> */}
+              <ResuabilityPlayerInput
+                 onChange={changeShoeSize}
+                 type="text"
+                 className="form-control"
+                 name="shoeSize"
+                 id="shoeSize"
+                 placeholder={t("playershoesize")}
+                 value={shoeSize}
+                 autoFocus={false}
+              />
             </div>
             <div className="form-floating mb-3">
               <input
