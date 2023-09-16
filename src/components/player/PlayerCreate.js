@@ -13,6 +13,7 @@ function PlayerCreate({ t }) {
   const [shoeSize, setShoeSize] = useState("");
   const [team, setTeam] = useState("");
   const [spinner, setSpinner] = useState(false);
+  const[multipleRequest, setMultipleRequest] = useState(false);
 
 
   const changeFullName = (event) => {
@@ -48,6 +49,7 @@ function PlayerCreate({ t }) {
     // Browser sen dur birşey yapma !
     event.preventDefault();
     setSpinner(true);
+    setMultipleRequest(true);
 
     const playerDto = { fullName, team, shoeSize }
     console.log(playerDto);
@@ -63,6 +65,7 @@ function PlayerCreate({ t }) {
         if (response.status == 201) {
           toastr.success('Player is added.', `${playerDto.fullName}`, { timeOut: 2000 })
           setSpinner(false);
+          setMultipleRequest(false);
         }
       })
       .catch((err) => {
@@ -128,7 +131,7 @@ function PlayerCreate({ t }) {
             </div>
             <div className='mt-3 text-end'>
               <button onClick={reset} className='btn btn-danger me-2'>{t("reset")}</button>
-              <button onClick={addPlayer} disabled={!isRead} className='btn btn-primary'>{t("addplayer")}</button>
+              <button onClick={addPlayer} disabled={!isRead || multipleRequest} className='btn btn-primary'>{t("addplayer")}</button>
               <span className='ms-2 '>
                 {
                   spinner ? <div className="spinner-border text-primary" role="status">
