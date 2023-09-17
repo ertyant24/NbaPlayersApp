@@ -16,6 +16,7 @@ function PlayerCreate({ t }) {
   const [team, setTeam] = useState("");
   const [spinner, setSpinner] = useState(false);
   const[multipleRequest, setMultipleRequest] = useState(false);
+  const[validationErrors, setValidationErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -28,6 +29,8 @@ function PlayerCreate({ t }) {
   }
   const changeShoeSize = (event) => {
     setShoeSize(event.target.value);
+    // const bakendErrorHandling = {...validationErrors};
+    // console.log(`Error : ${bakendErrorHandling}`);
   }
 
   const isReadChecked = (event) => {
@@ -80,8 +83,12 @@ function PlayerCreate({ t }) {
         }
       })
       .catch((err) => {
-        let validattion = document.getElementById("validation");
-        validattion.innerText = `Error Message: ${err}`;
+        console.log(err);
+        if(err.response.data.errors){
+          setValidationErrors(err.response.data.errors);
+        }
+        // let validattion = document.getElementById("validation");
+        // validattion.innerText = `Error Message: ${err}`;
       })
   }
 
@@ -90,8 +97,11 @@ function PlayerCreate({ t }) {
       <div className="container my-4">
         <div className="row">
           <div className="col-6 offset-3">
-            <h1 className='text-center text-primary mb-4'>{t(("addplayer"))}</h1>
+            <h1 className='text-center text-primary'>{t(("addplayer"))}</h1><hr />
             <div className='fs-6 text-danger px-3 mb-3' id='validation'></div>
+            {
+                validationErrors.model ? <p style={{fontSize: "0.8rem"}} className='px-3 mb-3 text-center fw-semibold text-danger'>{validationErrors.model}</p> : ""
+              }
             <div className="form-floating mb-3">
               {/* <input
                 onChange={changeFullName}
@@ -106,13 +116,17 @@ function PlayerCreate({ t }) {
               <ResuabilityPlayerInput
                 onChange={changeFullName}
                 type="text"
-                className="form-control"
+                className="form-control mt-4"
                 name="fullName"
                 id="fullName"
                 placeholder={t("playername")}
                 value={fullName}
                 autoFocus={true}
+                // validation={validationErrors.FullName}
               />
+              {
+                validationErrors.FullName ? <span style={{fontSize: "0.8rem"}} className='ps-1 fw-semibold text-danger'>{validationErrors.FullName}</span> : ""
+              }
             </div>
             <div className="form-floating mb-3">
               {/* <input
@@ -134,7 +148,11 @@ function PlayerCreate({ t }) {
                  placeholder={t("playershoesize")}
                  value={shoeSize}
                  autoFocus={false}
+                //  validation={validationErrors.ShoeSize}
               />
+              {
+                validationErrors.ShoeSize ? <span style={{fontSize: "0.8rem"}} className='ps-1 fw-semibold text-danger'>{validationErrors.ShoeSize}</span> : ""
+              }
             </div>
             <div className="form-floating mb-3">
               <input

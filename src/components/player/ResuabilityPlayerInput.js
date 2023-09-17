@@ -3,7 +3,7 @@ import React from 'react'
 function ResuabilityPlayerInput(props) {
 
     // OBJECT DESTRUCTİNG
-    const {type, className, name, id, placeholder, onChange, value, autoFocus} = props;
+    const {type, className, name, id, placeholder, onChange, value, autoFocus, validation} = props;
 
     return (
         <>
@@ -18,6 +18,7 @@ function ResuabilityPlayerInput(props) {
                 value={value}
             />
             <label htmlFor={id}>{placeholder}</label>
+            {/* <span style={{fontSize: "0.8rem"}} className='ps-1 fw-semibold text-danger'>{validation}</span> */}
         </>
     )
 }

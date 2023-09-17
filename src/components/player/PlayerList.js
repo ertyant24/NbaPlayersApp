@@ -45,9 +45,10 @@ function PlayerList({ t }) {
   };
 
   const deleteAllPlayer = () => {
+    // DB' den veriler gitmeyecek ...
     let result = window.confirm(`Are you sure all this players`);
     if (result) {
-      setPlayerData(playerData.filter((nba) => nba.fullName = ""));
+      setPlayerData(playerData.filter((nba) => nba.fullName == ""));
     }
     else {
       alert("All Data are not deleted ...");
