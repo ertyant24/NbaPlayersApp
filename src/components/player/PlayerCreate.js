@@ -49,6 +49,8 @@ function PlayerCreate({ t }) {
     setTeam("");
     setİsActive(true);
     setİsRead(true)
+    setMultipleRequest(false);
+    setSpinner(false);
   }
 
   const addPlayer = async (event) => {
