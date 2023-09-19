@@ -3,14 +3,14 @@ import { withTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom';
 import '../App.css';
 import BasketballPng from '../Images/basketball.jpg'
-import StudentPhoto from '../Images/student.jpg'
+import BlogPhoto from '../Images/blog.jpg'
 
 function Main({ t }) {
     return (
         <>
             <div>
                 <div className="alert alert-info text-center fs-3" role="alert">
-                    <strong style={{ color: "red" }}>{t("hello")}</strong> Nba Severler  &  Sevgili Öğrenciler !!!
+                    <strong style={{ color: "red" }}>{t("hello")}</strong> Nba & Blog Severler !!!
                 </div>
             </div>
             <div className="container mt-5">
@@ -21,15 +21,15 @@ function Main({ t }) {
                         </Link>
                     </div>
                     <div className='col-6'>
-                        <Link to="/student/list" className='btn btn-secondary ms-5'>
-                            <img style={{ cursor: "pointer" }} src={StudentPhoto} alt="basketball" width="400px" />
+                        <Link to="/student/list" className='btn btn-secondary'>
+                            <img style={{ cursor: "pointer" }} src={BlogPhoto} alt="basketball" width="400px" />
                         </Link>
                     </div>
-                    <div className='col-6 mt-1'>
+                    <div className='col-6 mt-2'>
                         <p>Player List'e gitmek için tıkla !!!</p>
                     </div>
-                    <div className='col-6 mt-1 ps-5'>
-                        <p>Student List'e gitmek için tıkla !!!</p>
+                    <div className='col-6 mt-2'>
+                        <p>Blog List'e gitmek için tıkla !!!</p>
                     </div>
                 </div>
             </div>

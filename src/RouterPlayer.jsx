@@ -11,10 +11,10 @@ import PlayerList from './components/player/PlayerList';
 import PlayerCreate from './components/player/PlayerCreate';
 import PlayerView from './components/player/PlayerView';
 import PlayerUpdate from './components/player/PlayerUpdate';
-import StudentList from './components/student/StudentList';
-import StudentCreate from './components/student/StudentCreate';
-import StudentUpdate from './components/student/StudentUpdate';
-import StudentView from './components/student/StudentView';
+import BlogList from './components/blog/BlogList';
+import BlogCreate from './components/blog/BlogCreate';
+import BlogUpdate from './components/blog/BlogUpdate';
+import BlogView from './components/blog/BlogView';
 
 const router = createBrowserRouter([
     {
@@ -42,20 +42,20 @@ const router = createBrowserRouter([
         element: <Navigate to="/" />
     },
     {
-        path: "/student/list",
-        element: <StudentList />
+        path: "/blog/list",
+        element: <BlogList />
     },
     {
-        path: "/student/create",
-        element: <StudentCreate />
+        path: "/blog/create",
+        element: <BlogCreate />
     },
     {
-        path: "/student/update/:id",
-        element: <StudentUpdate />
+        path: "/blog/update/:id",
+        element: <BlogUpdate />
     },
     {
-        path: "/student/view/:id",
-        element: <StudentView />
+        path: "/blog/view/:id",
+        element: <BlogView />
     },
 ]);
 
