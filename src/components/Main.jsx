@@ -20,8 +20,8 @@ function Main({ t }) {
                             <img style={{ cursor: "pointer" }} src={BasketballPng} alt="basketball" width="400px" />
                         </Link>
                     </div>
-                    <div className='col-6'>
-                        <Link to="/student/list" className='btn btn-secondary'>
+                    <div className='col-6'> 
+                        <Link to="/blog/list" className='btn btn-secondary'>
                             <img style={{ cursor: "pointer" }} src={BlogPhoto} alt="basketball" width="400px" />
                         </Link>
                     </div>
