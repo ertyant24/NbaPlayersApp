@@ -11,6 +11,10 @@ import PlayerList from './components/player/PlayerList';
 import PlayerCreate from './components/player/PlayerCreate';
 import PlayerView from './components/player/PlayerView';
 import PlayerUpdate from './components/player/PlayerUpdate';
+import StudentList from './components/student/StudentList';
+import StudentCreate from './components/student/StudentCreate';
+import StudentUpdate from './components/student/StudentUpdate';
+import StudentView from './components/student/StudentView';
 
 const router = createBrowserRouter([
     {
@@ -36,7 +40,23 @@ const router = createBrowserRouter([
     {
         path: "*",
         element: <Navigate to="/" />
-    }
+    },
+    {
+        path: "/student/list",
+        element: <StudentList />
+    },
+    {
+        path: "/student/create",
+        element: <StudentCreate />
+    },
+    {
+        path: "/student/update/:id",
+        element: <StudentUpdate />
+    },
+    {
+        path: "/student/view/:id",
+        element: <StudentView />
+    },
 ]);
 
 // CLASS

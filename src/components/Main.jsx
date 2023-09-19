@@ -3,20 +3,35 @@ import { withTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom';
 import '../App.css';
 import BasketballPng from '../Images/basketball.jpg'
+import StudentPhoto from '../Images/student.jpg'
 
-function Main({t}) {
+function Main({ t }) {
     return (
         <>
             <div>
                 <div className="alert alert-info text-center fs-3" role="alert">
-                    <strong style={{color: "red"}}>{t("hello")}</strong> Nba Severler !!!
+                    <strong style={{ color: "red" }}>{t("hello")}</strong> Nba Severler  &  Sevgili Öğrenciler !!!
                 </div>
             </div>
-            <div className='mt-4 text-center'>
-                <Link to="/player/list" className='btn btn-secondary'>
-                    <img style={{cursor: "pointer"}} src={BasketballPng} alt="basketball" width="400px"/>
-                </Link>
-                <div>Player List' e gitmek için fotoğrafa tıkla !</div>
+            <div className="container mt-5">
+                <div className="row text-center">
+                    <div className="col-6">
+                        <Link to="/player/list" className='btn btn-secondary'>
+                            <img style={{ cursor: "pointer" }} src={BasketballPng} alt="basketball" width="400px" />
+                        </Link>
+                    </div>
+                    <div className='col-6'>
+                        <Link to="/student/list" className='btn btn-secondary ms-5'>
+                            <img style={{ cursor: "pointer" }} src={StudentPhoto} alt="basketball" width="400px" />
+                        </Link>
+                    </div>
+                    <div className='col-6 mt-1'>
+                        <p>Player List'e gitmek için tıkla !!!</p>
+                    </div>
+                    <div className='col-6 mt-1 ps-5'>
+                        <p>Student List'e gitmek için tıkla !!!</p>
+                    </div>
+                </div>
             </div>
             <div className='mt-3'>
                 <p className='paragraf'>
