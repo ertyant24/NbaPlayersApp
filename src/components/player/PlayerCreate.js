@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { withTranslation } from 'react-i18next'
 import PlayerApi from '../../services/PlayerApi';
 import toastr from 'toastr'
@@ -15,8 +15,8 @@ function PlayerCreate({ t }) {
   const [shoeSize, setShoeSize] = useState("");
   const [team, setTeam] = useState("");
   const [spinner, setSpinner] = useState(false);
-  const[multipleRequest, setMultipleRequest] = useState(false);
-  const[validationErrors, setValidationErrors] = useState({});
+  const [multipleRequest, setMultipleRequest] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -47,8 +47,8 @@ function PlayerCreate({ t }) {
     setFullName("");
     setShoeSize("");
     setTeam("");
-    setİsActive(true);
-    setİsRead(true)
+    setİsActive(false);
+    setİsRead(false)
     setMultipleRequest(false);
     setSpinner(false);
   }
@@ -71,7 +71,7 @@ function PlayerCreate({ t }) {
     PlayerApi.Create(playerDto)
       .then((response) => {
         console.log(response);
-        if (response.status == 201) {
+        if (response.status === 201) {
           // LOCAL STORAGE
           localStorage.setItem("Player Name", playerDto.fullName);
           localStorage.setItem("Player Shoe Size", playerDto.shoeSize);
@@ -86,7 +86,7 @@ function PlayerCreate({ t }) {
       })
       .catch((err) => {
         console.log(err);
-        if(err.response.data.errors){
+        if (err.response.data.errors) {
           setValidationErrors(err.response.data.errors);
         }
         // let validattion = document.getElementById("validation");
@@ -102,8 +102,8 @@ function PlayerCreate({ t }) {
             <h1 className='text-center text-primary'>{t(("addplayer"))}</h1><hr />
             <div className='fs-6 text-danger px-3 mb-3' id='validation'></div>
             {
-                validationErrors.model ? <p style={{fontSize: "0.8rem"}} className='px-3 mb-3 text-center fw-semibold text-danger'>{validationErrors.model}</p> : ""
-              }
+              validationErrors.model ? <p style={{ fontSize: "0.8rem" }} className='px-3 mb-3 text-center fw-semibold text-danger'>{validationErrors.model}</p> : ""
+            }
             <div className="form-floating mb-3">
               {/* <input
                 onChange={changeFullName}
@@ -124,10 +124,10 @@ function PlayerCreate({ t }) {
                 placeholder={t("playername")}
                 value={fullName}
                 autoFocus={true}
-                // validation={validationErrors.FullName}
+              // validation={validationErrors.FullName}
               />
               {
-                validationErrors.FullName ? <span style={{fontSize: "0.8rem"}} className='ps-1 fw-semibold text-danger'>{validationErrors.FullName}</span> : ""
+                validationErrors.FullName ? <span style={{ fontSize: "0.8rem" }} className='ps-1 fw-semibold text-danger'>{validationErrors.FullName}</span> : ""
               }
             </div>
             <div className="form-floating mb-3">
@@ -142,18 +142,18 @@ function PlayerCreate({ t }) {
               />
               <label htmlFor="shoeSize">{t("playershoesize")}</label> */}
               <ResuabilityPlayerInput
-                 onChange={changeShoeSize}
-                 type="text"
-                 className="form-control"
-                 name="shoeSize"
-                 id="shoeSize"
-                 placeholder={t("playershoesize")}
-                 value={shoeSize}
-                 autoFocus={false}
-                //  validation={validationErrors.ShoeSize}
+                onChange={changeShoeSize}
+                type="text"
+                className="form-control"
+                name="shoeSize"
+                id="shoeSize"
+                placeholder={t("playershoesize")}
+                value={shoeSize}
+                autoFocus={false}
+              //  validation={validationErrors.ShoeSize}
               />
               {
-                validationErrors.ShoeSize ? <span style={{fontSize: "0.8rem"}} className='ps-1 fw-semibold text-danger'>{validationErrors.ShoeSize}</span> : ""
+                validationErrors.ShoeSize ? <span style={{ fontSize: "0.8rem" }} className='ps-1 fw-semibold text-danger'>{validationErrors.ShoeSize}</span> : ""
               }
             </div>
             <div className="form-floating mb-3">
@@ -169,13 +169,13 @@ function PlayerCreate({ t }) {
               <label htmlFor="team">{t("playerteam")}</label>
             </div>
             <div className="form-check">
-              <input className="form-check-input" type="checkbox" defaultValue="" id="isActive" onChange={isActiveChecked} />
+              <input className="form-check-input" type="checkbox" defaultValue="" id="isActive" onChange={isActiveChecked} checked={isActive} />
               <label className="form-check-label" htmlFor="isActive">
                 {t("playerisactive")}
               </label>
             </div>
             <div className="form-check mt-2">
-              <input className="form-check-input" type="checkbox" defaultValue="" id="isRead" onChange={isReadChecked} />
+              <input className="form-check-input" type="checkbox" defaultValue="" id="isRead" onChange={isReadChecked} checked={isRead} />
               <label className="form-check-label" htmlFor="isRead">
                 {t("isread")}
               </label>

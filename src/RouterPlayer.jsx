@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <PlayerCreate />
     },
     {
-        path: "/player/update/:id",
+        path: "/player/update/:id", // İki nokta url' de dinamik oluşturma.
         element: <PlayerUpdate />
     },
     {
