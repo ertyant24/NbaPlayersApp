@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 function BlogList() {
 
@@ -17,6 +19,35 @@ function BlogList() {
       })
   }, [])
 
+  const deleteAllBlog = () => {
+    setBlogData(blogData.filter((del) => del.header = ""));
+  };
+
+  const deleteBlog = (id) => {
+    // No delete in DB
+    // setBlogData(blogData.filter((del) => del.id != id));
+
+    let result = window.confirm(`Are you sure delete this blog ?`);
+    if (result) {
+      // delete in DB
+      axios.delete(`https://64e5fa9609e64530d17f608f.mockapi.io/api/v1/blog/react_project/${id}`)
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            setBlogData(blogData.filter((del) => del.id != id));
+            toastr.error('Delete this blog', `${response.data.header}`);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error Message: ${err}`)
+        })
+    }
+    else{
+      toastr.error(`Not deleted this blog`);
+    }
+
+  }
+
   return (
     <>
       <div className="container my-5">
@@ -25,7 +56,7 @@ function BlogList() {
             <h1 className='text-center text-primary fw-bold'>Blog List</h1>
           </div><hr />
           <div className='text-end mt-3 mb-5'>
-            <Link className='btn btn-danger me-3'>
+            <Link onClick={deleteAllBlog} className='btn btn-danger me-3'>
               All Blog Delete
             </Link>
             <Link to="/blog/create" className='btn btn-primary'>
@@ -33,8 +64,8 @@ function BlogList() {
             </Link>
           </div>
           <div className='col-12'>
-            <div class="table-responsive">
-              <table class="table table-dark table-striped table-hover text-center align-middle" style={{fontSize: "1.25rem", fontFamily: "cursive"}}>
+            <div className="table-responsive">
+              <table className="table table-dark table-striped table-hover text-center align-middle" style={{ fontSize: "1rem", fontFamily: "cursive" }}>
                 <thead>
                   <tr>
                     <th scope="col">Blog Id</th>
@@ -57,25 +88,31 @@ function BlogList() {
                         <td>{blog.header}</td>
                         <td>{blog.content}</td>
                         <td>
-                          <i
-                            style={{ cursor: "pointer" }}
-                            className="fa-solid fa-pen-to-square"
-                          >
-                          </i>
+                          <Link to={`/blog/update/${blog.id}`}>
+                            <i
+                              style={{ cursor: "pointer", fontSize: "1.5rem" }}
+                              className="fa-solid fa-pen-to-square text-success"
+                            >
+                            </i>
+                          </Link>
                         </td>
                         <td>
-                          <i
-                            style={{ cursor: "pointer" }}
-                            className="fa-solid fa-eye"
-                          >
-                          </i>
+                          <Link to={`/blog/view/${blog.id}`}>
+                            <i
+                              style={{ cursor: "pointer", fontSize: "1.5rem" }}
+                              className="fa-solid fa-eye text-info"
+                            >
+                            </i>
+                          </Link>
                         </td>
                         <td>
-                          <i
-                            style={{ cursor: "pointer" }}
-                            className="fa-solid fa-user-minus"
-                          >
-                          </i>
+                          <Link onClick={() => deleteBlog(blog.id)}>
+                            <i
+                              style={{ cursor: "pointer", fontSize: "1.5rem" }}
+                              className="fa-solid fa-user-minus text-danger"
+                            >
+                            </i>
+                          </Link>
                         </td>
                       </tr>
                     ))
