@@ -36,8 +36,7 @@ function PlayerList({ t }) {
     PlayerApi.Delete(id)
       .then((response) => {
         console.log(`Deleted data: ${response}`);
-        playerData.filter((nba) => nba.id != id);
-        window.location.reload();
+        setPlayerData(playerData.filter((nba) => nba.id != id));
       })
       .catch(() => {
 

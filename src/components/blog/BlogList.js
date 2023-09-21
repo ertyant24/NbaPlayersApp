@@ -64,17 +64,17 @@ function BlogList() {
             </Link>
           </div>
           <div className='col-12'>
-            <div className="table-responsive">
-              <table className="table table-dark table-striped table-hover text-center align-middle" style={{ fontSize: "1rem", fontFamily: "cursive" }}>
+            <div className='table-responsive'>
+              <table className="table table-dark table-striped table-hover text-center align-middle" style={{ fontFamily: "cursive", fontSize: "1.1rem"}}>
                 <thead>
                   <tr>
-                    <th scope="col">Blog Id</th>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Update</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Delete</th>
+                    <th>Blog Id</th>
+                    <th>Photo</th>
+                    <th>Header</th>
+                    <th>Content</th>
+                    <th>Update</th>
+                    <th>View</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
